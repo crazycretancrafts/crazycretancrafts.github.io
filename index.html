@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Cretan Crafts | DIY Furniture & Lamps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations and effects */
+        .hero-image {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5)
+  ),
+  url('https://images.unsplash.com/photo-1629973700222-4da8780086d0?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+}
+
+}
+
+        }
+        
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Standardized image sizing */
+        .gallery-item img, .carousel-image {
+            aspect-ratio: 1400/1880;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .material-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .material-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c9a66b;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b38a4a;
+        }
+        
+        /* Animation for gallery items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-amber-800 flex items-center">
+                <i class="fas fa-hammer mr-2"></i> CrazyCretanCrafts
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-amber-700 transition">Home</a>
+                <a href="#gallery" class="hover:text-amber-700 transition">Gallery</a>
+                <a href="#materials" class="hover:text-amber-700 transition">Materials</a>
+                <a href="#about" class="hover:text-amber-700 transition">About</a>
+                <a href="#contact" class="hover:text-amber-700 transition">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#home" class="block py-2 hover:text-amber-700 transition">Home</a>
+            <a href="#gallery" class="block py-2 hover:text-amber-700 transition">Gallery</a>
+            <a href="#materials" class="block py-2 hover:text-amber-700 transition">Materials</a>
+            <a href="#about" class="block py-2 hover:text-amber-700 transition">About</a>
+            <a href="#contact" class="block py-2 hover:text-amber-700 transition">Contact</a>
+        </div>
+    </nav>
+
+  <!-- Hero Section -->
+<section id="home" class="hero-image h-screen flex items-center justify-center text-center text-white">
+  <div class="px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">Innovate, Design, Create</h1>
+    <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+      Unique, sustainable pieces crafted with passion and precision
+    </p>
+    
+    <!-- Button Container -->
+    <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+      <a href="#gallery" class="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 rounded-full text-lg font-semibold transition duration-300">
+        View Creations
+      </a>
+      <a href="#custom" class="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 rounded-full text-lg font-semibold transition duration-300">
+        Get Custom
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+
+    <!-- Featured Products -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Creations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-100 rounded-lg overflow-hidden gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586304f5de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Wooden Chair" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Rustic Oak Chair</h3>
+                        <p class="text-gray-600 mb-4">Hand-carved from reclaimed oak with a natural oil finish</p>
+                        <span class="text-amber-700 font-bold">$249</span>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513506003901-1a6b1c2d2386?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pendant Lamp" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Industrial Pendant Lamp</h3>
+                        <p class="text-gray-600 mb-4">Handcrafted metal and glass pendant with Edison bulb</p>
+                        <span class="text-amber-700 font-bold">$189</span>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden gallery-item">
+                    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80" alt="Coffee Table" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Live Edge Coffee Table</h3>
+                        <p class="text-gray-600 mb-4">Solid walnut slab with black metal legs</p>
+                        <span class="text-amber-700 font-bold">$599</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Craftsmanship</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery items will be added here by JavaScript -->
+            </div>
+            <div class="text-center mt-10">
+                <button id="load-more" class="bg-amber-700 hover:bg-amber-800 text-white px-6 py-2 rounded-full transition duration-300">
+                    Load More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Sustainable Materials</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="material-icon">
+                    <i class="fas fa-tree text-5xl text-amber-700 mb-4"></i>
+                    <h3 class="font-semibold">Reclaimed Wood</h3>
+                    <p class="text-gray-600 mt-2">Sourced from local barns and buildings</p>
+                </div>
+                <div class="material-icon">
+                    <i class="fas fa-recycle text-5xl text-amber-700 mb-4"></i>
+                    <h3 class="font-semibold">Upcycled Metals</h3>
+                    <p class="text-gray-600 mt-2">Repurposed industrial materials</p>
+                </div>
+                <div class="material-icon">
+                    <i class="fas fa-leaf text-5xl text-amber-700 mb-4"></i>
+                    <h3 class="font-semibold">Natural Finishes</h3>
+                    <p class="text-gray-600 mt-2">Non-toxic oils and waxes</p>
+                </div>
+                <div class="material-icon">
+                    <i class="fas fa-lightbulb text-5xl text-amber-700 mb-4"></i>
+                    <h3 class="font-semibold">LED Lighting</h3>
+                    <p class="text-gray-600 mt-2">Energy efficient options available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Workshop" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">About The Craftsman</h2>
+                    <p class="text-gray-700 mb-4">Hi, I'm Alex. What began as a hobby in my garage has grown into a passion for creating unique, functional pieces that bring warmth and character to any space.</p>
+                    <p class="text-gray-700 mb-4">Each piece is designed and built by me from start to finish, ensuring attention to detail and quality craftsmanship in every step of the process.</p>
+                    <p class="text-gray-700 mb-6">I believe in sustainable practices, using reclaimed materials whenever possible and minimizing waste in my workshop.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-amber-700 hover:text-amber-800 transition">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-amber-700 hover:text-amber-800 transition">
+                            <i class="fab fa-pinterest text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-amber-700 hover:text-amber-800 transition">
+                            <i class="fab fa-etsy text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Customer Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-700 mr-4">
+                            <i class="fas fa-quote-left text-2xl"></i>
+                        </div>
+                        <p class="italic">"The live edge table is the centerpiece of our living room. The craftsmanship is exceptional and it's clearly built to last."</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="font-semibold">Sarah J.</p>
+                            <p class="text-sm text-gray-600">Portland, OR</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-700 mr-4">
+                            <i class="fas fa-quote-left text-2xl"></i>
+                        </div>
+                        <p class="italic">"I commissioned a custom bookshelf and couldn't be happier. Alex listened to my needs and delivered beyond expectations."</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="font-semibold">Michael T.</p>
+                            <p class="text-sm text-gray-600">Seattle, WA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-700 mr-4">
+                            <i class="fas fa-quote-left text-2xl"></i>
+                        </div>
+                        <p class="italic">"The pendant lamps add such character to our kitchen. We get compliments on them all the time!"</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="font-semibold">Lisa M.</p>
+                            <p class="text-sm text-gray-600">Denver, CO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+            <div class="max-w-3xl mx-auto">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6" action="https://formspree.io/f/xwkzqgqg" method="POST">
+                    <div>
+                        <label for="name" class="block mb-2 font-medium">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 font-medium">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="subject" class="block mb-2 font-medium">Subject</label>
+                        <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="message" class="block mb-2 font-medium">Message</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700"></textarea>
+                    </div>
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit" class="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 rounded-full text-lg font-semibold transition duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Crazy Cretan Crafts</h3>
+                    <p class="text-gray-400">Unique, handcrafted furniture and lighting for your home.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+                        <li><a href="#materials" class="text-gray-400 hover:text-white transition">Materials</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i> 123 Craft St, Portland, OR
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i> (555) 123-4567
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i> hello@craftedbyhand.com
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe for updates on new creations and workshops.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900 focus:outline-none">
+                        <button class="bg-amber-700 hover:bg-amber-800 px-4 py-2 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 CraftedByHand. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-amber-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Gallery items data
+        const galleryItems = [
+            {
+                title: "Giant Pencil Lamp",
+                description: "Elevate your space and draw attention",
+                price: "$300",
+                images: [
+
+			"images/pencil1.jpg",
+			"images/pencil2.jpg",
+			"images/pencil3.jpg"
+			]
+            },
+            {
+                title: "skateboard mirror",
+                description: "Its forbiden to skate inside the house",
+                price: "$100",
+                images: ["images/skateboard_mirror.jpg"
+					]
+            },
+            {
+                title: "TV aquarium",
+                description: "Fish Chanel",
+                price: "$250",
+                images: ["images/tv_aquarium.jpg"]
+            },
+            {
+                title: "Sculptural Floor Lamp",
+                description: "Hand-forged iron with linen shade",
+                price: "$349",
+                image: "https://images.unsplash.com/photo-1513506003901-1a6b1c2d2386?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            },
+            {
+                title: "Rustic Bench",
+                description: "Reclaimed teak with visible joinery",
+                price: "$279",
+                image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
+            },
+            {
+                title: "Wall-mounted Shelf",
+                description: "Floating walnut shelves with black brackets",
+                price: "$129",
+                image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            },
+            {
+                title: "Modern Bar Stool",
+                description: "Leather seat with oak legs",
+                price: "$189",
+                image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80"
+            },
+            {
+                title: "Chandelier",
+                description: "Hand-blown glass globes with brass fittings",
+                price: "$499",
+                image: "https://images.unsplash.com/photo-1519669417670-5438723881b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+            },
+            {
+                title: "Console Table",
+                description: "Live edge maple with hairpin legs",
+                price: "$449",
+                image: "https://images.unsplash.com/photo-1555041469-a586304f5de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            }
+        ];
+        
+        // Load gallery items
+        const galleryContainer = document.querySelector('#gallery .grid');
+        const loadMoreButton = document.getElementById('load-more');
+        let visibleItems = 6;
+        
+        function loadGalleryItems(count) {
+            const itemsToShow = galleryItems.slice(0, count);
+            
+            galleryContainer.innerHTML = '';
+            
+            itemsToShow.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'bg-white rounded-lg overflow-hidden gallery-item animate-fade-in';
+                galleryItem.style.animationDelay = `${index * 0.1}s`;
+                galleryItem.innerHTML = `
+                    ${item.images ? `
+  <div class="relative">
+  <img src="${item.images[0]}" alt="${item.title}" class="carousel-image w-full h-100 object-cover object-center">
+  <button class="prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-amber-700 hover:bg-amber-800 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-md transition duration-200">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="next absolute top-1/2 right-2 transform -translate-y-1/2 bg-amber-700 hover:bg-amber-800 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-md transition duration-200">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+
+` : `
+  <img src="${item.image}" alt="${item.title}" class="w-full h-100 object-cover">
+`}
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">${item.title}</h3>
+                        <p class="text-gray-600 mb-4">${item.description}</p>
+                        <span class="text-amber-700 font-bold">${item.price}</span>
+                    </div>
+                `;
+                galleryContainer.appendChild(galleryItem);
+if (item.images) {
+  let currentImageIndex = 0;
+  const imgTag = galleryItem.querySelector('.carousel-image');
+  const prevBtn = galleryItem.querySelector('.prev');
+  const nextBtn = galleryItem.querySelector('.next');
+
+  const updateImage = () => {
+    imgTag.src = item.images[currentImageIndex];
+  };
+
+  prevBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + item.images.length) % item.images.length;
+    updateImage();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % item.images.length;
+    updateImage();
+  });
+}
+
+            });
+        }
+        
+        // Initial load
+        loadGalleryItems(visibleItems);
+        
+        // Load more button click
+        loadMoreButton.addEventListener('click', () => {
+            visibleItems += 3;
+            if (visibleItems >= galleryItems.length) {
+                visibleItems = galleryItems.length;
+                loadMoreButton.classList.add('hidden');
+            }
+            loadGalleryItems(visibleItems);
+        });
+        
+        // Form submission
+        // Formspree handles the submission and email delivery
+    </script>
+</body>
+</html>
