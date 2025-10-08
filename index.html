@@ -219,15 +219,14 @@
                     <p class="text-gray-700 mb-4">Each piece is designed and built by me from start to finish, ensuring attention to detail and quality craftsmanship in every step of the process.</p>
                     <p class="text-gray-700 mb-6">I believe in sustainable practices, using reclaimed materials whenever possible and minimizing waste in my workshop.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-amber-700 hover:text-amber-800 transition">
-                            <i class="fab fa-instagram text-2xl"></i>
-                        </a>
-                        <a href="#" class="text-amber-700 hover:text-amber-800 transition">
-                            <i class="fab fa-pinterest text-2xl"></i>
-                        </a>
-                        <a href="#" class="text-amber-700 hover:text-amber-800 transition">
-                            <i class="fab fa-etsy text-2xl"></i>
-                        </a>
+                        <div class="flex items-center space-x-2 mr-6">
+                            <i class="fab fa-instagram text-2xl text-amber-700"></i>
+                            <span class="text-gray-800 font-medium">crazy_cretan_crafts</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fab fa-tiktok text-2xl text-amber-700"></i>
+                            <span class="text-gray-800 font-medium">babis.astrinakis</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,17 +290,6 @@
         </div>
     </footer>
 
-    <!-- Upload / Convert HEIC Photos -->
-    <section class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h3 class="text-2xl font-semibold mb-4">Upload photos (HEIC supported)</h3>
-            <p class="text-gray-700 mb-4">Select one or more photos. HEIC/HEIF files will be converted to JPEG in your browser and shown as previews you can download.</p>
-            <div class="mb-4">
-                <input id="photo-input" type="file" accept="image/*,.heic,.HEIC,.heif,.HEIF" multiple class="">
-            </div>
-            <div id="photo-previews" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
-        </div>
-    </section>
 
     <!-- Back to top button -->
     <button id="back-to-top" class="fixed bottom-8 right-8 bg-amber-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible">
@@ -525,152 +513,6 @@ if (item.images) {
         
         // Form submission
         // Formspree handles the submission and email delivery
-    </script>
-    // HEIC upload + conversion helper
-    (function(){
-        const input = document.getElementById('photo-input');
-        const previews = document.getElementById('photo-previews');
-
-        function loadHeic2anyOnce(){
-            if (window.heic2any) return Promise.resolve();
-            return new Promise(function(resolve, reject){
-                var s = document.createElement('script');
-                s.src = 'https://unpkg.com/heic2any/dist/heic2any.min.js';
-                s.async = true;
-                s.onload = resolve;
-                s.onerror = reject;
-                document.head.appendChild(s);
-            });
-        }
-
-        input && input.addEventListener('change', async function(e){
-            const files = Array.from(e.target.files || []);
-            if (!files.length) return;
-
-            // ensure library is available if any HEIC files are present
-            const hasHeic = files.some(f => /\.heic$/i.test(f.name) || /\.heif$/i.test(f.name));
-            if (hasHeic){
-                try{ await loadHeic2anyOnce(); }catch(err){
-                    alert('Could not load HEIC conversion library. HEIC files may not convert.');
-                }
-            }
-
-            previews.innerHTML = '';
-
-            files.forEach(async function(file){
-                const card = document.createElement('div');
-                card.className = 'bg-white p-4 rounded shadow';
-
-                const title = document.createElement('p');
-                title.className = 'text-sm font-medium mb-2';
-                title.textContent = file.name;
-                card.appendChild(title);
-
-                const img = document.createElement('img');
-                img.className = 'w-full h-48 object-cover mb-2';
-
-                const info = document.createElement('div');
-                info.className = 'flex justify-between items-center';
-
-                const downloadBtn = document.createElement('a');
-                downloadBtn.className = 'bg-amber-700 text-white px-3 py-1 rounded text-sm';
-                downloadBtn.textContent = 'Download';
-                downloadBtn.href = '#';
-                downloadBtn.setAttribute('download', file.name.replace(/\.(heic|HEIC|heif|HEIF)$/i, '.jpg'));
-
-                info.appendChild(downloadBtn);
-                card.appendChild(img);
-                card.appendChild(info);
-                previews.appendChild(card);
-
-                try{
-                    if (/\.(heic|HEIC|heif|HEIF)$/i.test(file.name) && window.heic2any){
-                        const out = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 });
-                        const finalBlob = out instanceof Blob ? out : new Blob([out], {type: 'image/jpeg'});
-                        const url = URL.createObjectURL(finalBlob);
-                        img.src = url;
-                        downloadBtn.href = url;
-                        // revoke after load
-                        img.addEventListener('load', function(){ try{ URL.revokeObjectURL(url); }catch(e){} }, { once: true });
-                    } else {
-                        const url = URL.createObjectURL(file);
-                        img.src = url;
-                        downloadBtn.href = url;
-                        img.addEventListener('load', function(){ try{ URL.revokeObjectURL(url); }catch(e){} }, { once: true });
-                    }
-                }catch(err){
-                    img.alt = 'Preview failed';
-                    console.error('Conversion/preview failed', err);
-                }
-            });
-        });
-    })();
-    <!-- HEIC support: convert .heic images to JPEG in-browser using heic2any -->
-    <script>
-    (function(){
-        // If you want the site to serve .heic images exactly as they are (no client-side conversion),
-        // set PRESERVE_HEIC to true. Browsers that support HEIC will display them; others may not.
-        // To enable preservation: window.PRESERVE_HEIC = true;
-        window.PRESERVE_HEIC = true;
-        // load heic2any library from CDN then convert any <img> with .heic extension
-        function loadScript(src){
-            return new Promise(function(resolve, reject){
-                var s = document.createElement('script');
-                s.src = src;
-                s.async = true;
-                s.onload = resolve;
-                s.onerror = reject;
-                document.head.appendChild(s);
-            });
-        }
-
-        // Convert images after DOMContentLoaded so all <img> tags are present
-        document.addEventListener('DOMContentLoaded', function(){
-            // If preservation of HEIC is enabled, skip client-side conversion entirely
-            if (window.PRESERVE_HEIC) {
-                console.info('PRESERVE_HEIC is true — skipping client-side HEIC conversion. .heic files will be served as-is.');
-                return;
-            }
-
-            // Only proceed if there are any .heic images present
-            var heicImgs = Array.from(document.querySelectorAll('img')).filter(function(i){
-                try{
-                    return i.getAttribute('src') && /\.heic(\?|$)/i.test(i.getAttribute('src'));
-                }catch(e){ return false; }
-            });
-
-            if (!heicImgs.length) return; // nothing to do
-
-            // Try to load heic2any from unpkg (falls back gracefully if blocked)
-            loadScript('https://unpkg.com/heic2any/dist/heic2any.min.js').then(function(){
-                // heic2any is available as a global
-                heicImgs.forEach(async function(img){
-                    var src = img.getAttribute('src');
-                    try{
-                        // fetch the HEIC file as a blob
-                        var resp = await fetch(src);
-                        if (!resp.ok) throw new Error('Fetch failed: ' + resp.status);
-                        var blob = await resp.blob();
-
-                        // convert to JPEG
-                        var outBlob = await heic2any({ blob: blob, toType: 'image/jpeg', quality: 0.9 });
-                        // heic2any may return an ArrayBuffer or Blob; ensure it's a Blob
-                        var finalBlob = outBlob instanceof Blob ? outBlob : new Blob([outBlob], {type: 'image/jpeg'});
-                        var objectUrl = URL.createObjectURL(finalBlob);
-                        img.src = objectUrl;
-                        // Revoke the object URL after the image has loaded to free memory
-                        img.addEventListener('load', function(){
-                            try{ URL.revokeObjectURL(objectUrl); }catch(e){}
-                        }, { once: true });
-                    }catch(err){
-                        console.error('HEIC conversion failed for', src, err);
-                    }
-                });
-            }).catch(function(err){
-                console.warn('Could not load heic2any library; .heic images may not display in this browser.', err);
-            });
-        });
-    })();
     </script>
 </body>
 </html>
