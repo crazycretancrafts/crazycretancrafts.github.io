@@ -438,7 +438,7 @@
         // Load gallery items
         const galleryContainer = document.querySelector('#gallery .grid');
         const loadMoreButton = document.getElementById('load-more');
-        let visibleItems = 6;
+    let visibleItems = galleryItems.length;
         
         function loadGalleryItems(count) {
             const itemsToShow = galleryItems.slice(0, count);
@@ -501,15 +501,8 @@ if (item.images) {
         // Initial load
         loadGalleryItems(visibleItems);
         
-        // Load more button click
-        loadMoreButton.addEventListener('click', () => {
-            visibleItems += 3;
-            if (visibleItems >= galleryItems.length) {
-                visibleItems = galleryItems.length;
-                loadMoreButton.classList.add('hidden');
-            }
-            loadGalleryItems(visibleItems);
-        });
+        // Hide the Load More button since all items are shown
+        loadMoreButton.classList.add('hidden');
         
         // Form submission
         // Formspree handles the submission and email delivery
